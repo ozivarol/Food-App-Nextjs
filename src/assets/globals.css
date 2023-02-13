@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn-primary{
+  @apply text-white px-[30px] py-[8px] rounded-3xl bg-primary cursor-pointer hover:opacity-70 transition-all;
+
+}
+
+.li-header{
+  @apply px-[0.313rem] py-[1.25rem] uppercase hover:text-primary cursor-pointer;
+}
+
+
