@@ -18,17 +18,20 @@ const Header = () => {
       setIsSearchModel(false)
     }
   }
-  useEffect(() => {
-    function handleResize() {
-      if (window.innerWidth > 375) {
-        setIsMenuModal(false);
-      }
-    }
+  // useEffect(() => {
+  //   function handleResize() {
+  //     if (window.innerWidth > 375) {
+  //       setIsMenuModal(false);
+  //     }
+  //   }
   
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  //   window.addEventListener("resize", handleResize);
+  //   return () => window.removeEventListener("resize", handleResize);
+  // }, []);
   
+  useEffect(() =>{
+    setIsMenuModal(true)
+  },isMenuModal)
   return (
     <div className='h-[5rem] bg-secondary'>
      <div className='container mx-auto text-white flex justify-between items-center h-full'>
@@ -45,7 +48,7 @@ const Header = () => {
           <button className={`${josefin_sans.className} btn-primary block sm:hidden xl:hidden lg:hidden`}>Order Online</button>
         </a>
         {isMenuModal && (<button className="absolute top-4 right-4 z-50" onClick={() => setIsMenuModal(false)}>
-                <AiFillCloseCircle size={25} className="hover:text-primary transition-all"/>
+                <AiFillCloseCircle size={25} className="hover:text-primary block sm:hidden xl:hidden lg:hidden transition-all"/>
         </button>) } 
         </ul>
         
@@ -72,7 +75,7 @@ const Header = () => {
        
       </div>
      </div>
-     {isSearchModal && <Search onClickForModal={onClickForSearchModal}/>}
+     {isSearchModal && <Search onClickForSearchModal={onClickForSearchModal}/>}
     </div>
   )
 }
