@@ -5,33 +5,29 @@ import {HiShoppingCart} from 'react-icons/hi'
 import Search from '../ui/Search'
 import {GiHamburgerMenu} from "react-icons/gi"
 import {AiFillCloseCircle} from "react-icons/ai"
-import { useMediaQuery } from 'react-responsive'
+import useRisize from '@/app/utilities/hooks/useResize'
 const {josefin_sans} = require("../../assets/font")
 
 
 const Header = () => {
   const [isSearchModal, setIsSearchModel] = useState(false)
-  const [isMenuModal,setIsMenuModal] = useState(false)
+  
   const onClickForSearchModal = () =>{
     setIsSearchModel(true)
     if(isSearchModal){
       setIsSearchModel(false)
     }
   }
-  // useEffect(() => {
-  //   function handleResize() {
-  //     if (window.innerWidth > 375) {
-  //       setIsMenuModal(false);
-  //     }
+  const {isMenuModal,setIsMenuModal} = useRisize()
+  
+  // useEffect(() =>{
+  //   if(window.innerWidth>375){
+  //     setIsMenuModal(false)
+
   //   }
+  //   console.log(isMenuModal)
+  // },[isMenuModal])
   
-  //   window.addEventListener("resize", handleResize);
-  //   return () => window.removeEventListener("resize", handleResize);
-  // }, []);
-  
-  useEffect(() =>{
-    setIsMenuModal(true)
-  },isMenuModal)
   return (
     <div className='h-[5rem] bg-secondary'>
      <div className='container mx-auto text-white flex justify-between items-center h-full'>
