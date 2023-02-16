@@ -5,43 +5,37 @@ import {HiShoppingCart} from 'react-icons/hi'
 import Search from '../ui/Search'
 import {GiHamburgerMenu} from "react-icons/gi"
 import {AiFillCloseCircle} from "react-icons/ai"
-import useRisize from '@/app/utilities/hooks/useResize'
-const {josefin_sans} = require("../../assets/font")
+import useResize from '@/app/utilities/hooks/useResize'
+const {josefinSansClass} = require("../../assets/font")
+import { useRouter } from 'next/navigation'
 
 
 const Header = () => {
   const [isSearchModal, setIsSearchModel] = useState(false)
-  
+  const {isMenuModal,setIsMenuModal} = useResize()
+  const router = useRouter()
   const onClickForSearchModal = () =>{
     setIsSearchModel(true)
     if(isSearchModal){
       setIsSearchModel(false)
     }
   }
-  const {isMenuModal,setIsMenuModal} = useRisize()
   
-  // useEffect(() =>{
-  //   if(window.innerWidth>375){
-  //     setIsMenuModal(false)
-
-  //   }
-  //   console.log(isMenuModal)
-  // },[isMenuModal])
   
   return (
-    <div className='h-[5rem] bg-secondary'>
+    <div className={`h-[5.5rem] z-50 relative ${router.asPath === "/" ? "bg-secondary" : "bg-transparent"}`}>
      <div className='container mx-auto text-white flex justify-between items-center h-full'>
      <div><Logo/></div>
       <nav className={`sm:static absolute top-0 left-0 sm:w-auto sm:h-auto w-full h-screen sm:text-white text-black sm:bg-transparent bg-white sm:flex hidden z-50  ${
             isMenuModal === true && "!grid place-content-center"
           }`}>
-        <ul className={`${josefin_sans.className} flex gap-x-2 sm:flex-row flex-col items-center`}>
-          <li className={`${josefin_sans.className} li-header`}><a href="">Home</a></li>
+        <ul className={`${josefinSansClass} flex gap-x-2 sm:flex-row flex-col items-center`}>
+          <li className={`${josefinSansClass} li-header`}><a href="">Home</a></li>
           <li className='li-header'><a href="">Menu</a></li>
           <li className='li-header'><a href="">About</a></li>
           <li className='li-header'><a href="">Book Table</a></li>
           <a href="#" className="li-header">
-          <button className={`${josefin_sans.className} btn-primary block sm:hidden xl:hidden lg:hidden`}>Order Online</button>
+          <button className={`${josefinSansClass} btn-primary block sm:hidden xl:hidden lg:hidden`}>Order Online</button>
         </a>
         {isMenuModal && (<button className="absolute top-4 right-4 z-50" onClick={() => setIsMenuModal(false)}>
                 <AiFillCloseCircle size={25} className="hover:text-primary block sm:hidden xl:hidden lg:hidden transition-all"/>
@@ -62,7 +56,7 @@ const Header = () => {
           <FaSearch className='hover:text-primary transition-all'/>
         </button>
         <a href="#" className="sm:inline-block hidden">
-          <button className={`${josefin_sans.className} btn-primary sm:p-2`}>Order Online</button>
+          <button className={`${josefinSansClass} btn-primary sm:p-2`}>Order Online</button>
         </a>
         <button>
           <GiHamburgerMenu className="block sm:hidden xl:hidden lg:hidden  text-xl hover:text-primary transition-all" onClick={() => setIsMenuModal(true)}/>

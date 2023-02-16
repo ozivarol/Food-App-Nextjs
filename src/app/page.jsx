@@ -11,6 +11,7 @@ export default function Index() {
   return (
       <div>
         <Header/>
+        <Home/>
 
       </div>
       
