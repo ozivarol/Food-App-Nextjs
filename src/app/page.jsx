@@ -6,12 +6,14 @@ import Link from 'next/link'
 import About from '../pages/about'
 import Header from '@/components/layouts/Header'
 
+
 export default function Index() {
   
   return (
-      <div>
+      <div className=''>
         <Header/>
         <Home/>
+        
 
       </div>
       
